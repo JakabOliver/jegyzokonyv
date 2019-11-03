@@ -2,13 +2,13 @@ package hu.bme.aut.jegyzokonyv.data;
 
 public class Substitution {
     private int id;
-    private String time;
+    private int time;
     private Match match;
     private Team team;
     private Player player_down;
     private Player player_up;
 
-    public Substitution(String time, Match match, Team team, Player player_down, Player player_up) {
+    public Substitution(int time, Match match, Team team, Player player_down, Player player_up) {
         this.time = time;
         this.match = match;
         this.team = team;
@@ -24,11 +24,11 @@ public class Substitution {
         this.id = id;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

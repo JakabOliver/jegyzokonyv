@@ -1,22 +1,19 @@
 package hu.bme.aut.jegyzokonyv.data;
 
-import java.util.Timer;
 
 public class Match {
     private int id;
     private String result;
     private Team home;
     private Team away;
-    private Timer timer;
 
     public Match(Team home, Team away) {
         this.home = home;
         this.away = away;
-        timer = new Timer();
     }
 
-    public boolean start(){
-        timer.
+    public boolean start() {
+        return true;
     }
 
     public int getId() {
