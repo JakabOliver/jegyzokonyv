@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent profileIntent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(profileIntent);
+                Intent gameIntent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(gameIntent);
             }
         });
         btnExit.setOnClickListener(new View.OnClickListener() {
