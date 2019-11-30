@@ -1,13 +1,14 @@
 package hu.bme.aut.jegyzokonyv.data;
 
-import java.util.List;
-
 public class Team {
     private int id;
     private String name;
-    private List<Player> players;
+    private Player[] players;
+    private Player[] starterPlayers;
+    private Player[] activePlayers;
+    public int[] buttonIDPlayerID;
 
-    public Team(String name, List<Player> players) {
+    public Team(String name, Player[] players) {
         this.name = name;
         this.players = players;
     }
@@ -28,15 +29,16 @@ public class Team {
         this.name = name;
     }
 
-    public List<Player> getPlayers() {
+    public Player[] getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(Player[] players) {
         this.players = players;
     }
 
-    public void addPlayer(Player player) {
-        this.players.add(player);
+    public void setStarterPlayers(Player[] starterPlayers) {
+        this.starterPlayers = starterPlayers;
+        this.activePlayers = starterPlayers;
     }
 }
