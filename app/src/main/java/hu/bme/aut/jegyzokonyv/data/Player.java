@@ -5,10 +5,13 @@ public class Player {
     private String name;
     private int number;
     private int team;
+    private boolean active;
+    private int buttonId;
 
-    public Player(String name, int number) {
+    public Player(String name, int number, boolean active) {
         this.name = name;
         this.number = number;
+        this.active = active;
     }
 
     public int getId() {
@@ -42,5 +45,22 @@ public class Player {
     public void setTeam(int team) {
         this.team = team;
     }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public int getButtonId() {
+        return buttonId;
+    }
+
+    public void setButtonId(int buttonId) {
+        this.buttonId = buttonId;
+    }
+
 
 }

@@ -47,4 +47,23 @@ public class Match {
     public void setAway(Team away) {
         this.away = away;
     }
+
+    public Player getPlayerByButtonId(int buttonID) {
+        Player[] players = getHome().getPlayers();
+
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getButtonId() == buttonID) {
+                return players[i];
+            }
+        }
+
+        /*
+        players = getAway().getPlayers();
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getButtonId() == buttonID) {
+                return players[i];
+            }
+        }*/
+        return null;
+    }
 }

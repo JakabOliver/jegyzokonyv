@@ -4,8 +4,6 @@ public class Team {
     private int id;
     private String name;
     private Player[] players;
-    private Player[] starterPlayers;
-    private Player[] activePlayers;
     public int[] buttonIDPlayerID;
 
     public Team(String name, Player[] players) {
@@ -37,8 +35,4 @@ public class Team {
         this.players = players;
     }
 
-    public void setStarterPlayers(Player[] starterPlayers) {
-        this.starterPlayers = starterPlayers;
-        this.activePlayers = starterPlayers;
-    }
 }
