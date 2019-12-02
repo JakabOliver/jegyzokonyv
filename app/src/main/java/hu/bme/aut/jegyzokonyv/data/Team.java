@@ -6,7 +6,8 @@ public class Team {
     private Player[] players;
     public int[] buttonIDPlayerID;
 
-    public Team(String name, Player[] players) {
+    public Team(int id, String name, Player[] players) {
+        this.id = id;
         this.name = name;
         this.players = players;
     }

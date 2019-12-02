@@ -6,6 +6,8 @@ public class Match {
     private String result;
     private Team home;
     private Team away;
+    private int homePoint = 0;
+    private int awayPoint = 0;
 
     public Match(Team home, Team away) {
         this.home = home;
@@ -57,13 +59,28 @@ public class Match {
             }
         }
 
-        /*
         players = getAway().getPlayers();
         for (int i = 0; i < players.length; i++) {
             if (players[i].getButtonId() == buttonID) {
                 return players[i];
             }
-        }*/
+        }
         return null;
+    }
+
+    public void homeTeamScored() {
+        homePoint++;
+    }
+
+    public void awayTeamScored() {
+        awayPoint++;
+    }
+
+    public int getHomePoint() {
+        return homePoint;
+    }
+
+    public int getAwayPoint() {
+        return awayPoint;
     }
 }

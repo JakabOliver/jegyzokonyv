@@ -8,9 +8,10 @@ public class Player {
     private boolean active;
     private int buttonId;
 
-    public Player(String name, int number, boolean active) {
+    public Player(String name, int number, int team, boolean active) {
         this.name = name;
         this.number = number;
+        this.team = team;
         this.active = active;
     }
 

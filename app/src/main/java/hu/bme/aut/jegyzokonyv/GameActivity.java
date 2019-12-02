@@ -19,29 +19,49 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        DataManager dtm = DataManager.getInstance();
-        loadPlayers(dtm);
-        for (int i = 0; i < 8; i++) {
-            String buttonId = "imageButton" + (i + 1);
-            int BtnId = getResources().getIdentifier(buttonId, "id", getPackageName());
-            findViewById(BtnId).setOnClickListener(this);
-        }
-
+        dtm = DataManager.getInstance();
+        loadPlayers();
+        displayScore();
+        resetTimer();
+        startStopButton = findViewById(R.id.startstopButton);
+        startStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!clockIsRunning) {
+                    resetTimer();
+                    timer.start();
+                    clockIsRunning = true;
+                    startStopButton.setText("Pause");
+                } else {
+                    timer.cancel();
+                    clockIsRunning = false;
+                    startStopButton.setText("Continue");
+                }
+            }
+        });
 
     }
 
-    private void loadPlayers(DataManager dtm) {
+
+    private void loadPlayers() {
         Match match = dtm.getMatch();
         Team home = match.getHome();
-        for (int i = 0; i < 8; i++) {
+        Team away = match.getAway();
+        Player player;
+        for (int i = 0; i < 16; i++) {
             String textViewID = "textView" + (i + 1);
             String buttonId = "imageButton" + (i + 1);
             int twID = getResources().getIdentifier(textViewID, "id", getPackageName());
             int BtnId = getResources().getIdentifier(buttonId, "id", getPackageName());
             TextView twi = findViewById(twID);
-            Player player = home.getPlayers()[i];
+            if (i < 8) {
+                player = home.getPlayers()[i];
+            } else {
+                player = away.getPlayers()[(i - 8)];
+            }
             player.setButtonId(BtnId);
             twi.setText(player.getName() + " #" + player.getNumber());
+            findViewById(BtnId).setOnClickListener(this);
         }
     }
 
@@ -57,6 +77,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void registerGoal(Player player, View v) {
         Toast.makeText(v.getContext(), "Gólt dobott: " + player.getName() + " #" + player.getNumber(),
                 Toast.LENGTH_SHORT).show();
+        Match match = dtm.getMatch();
+        if (match.getHome().getId() == player.getTeam()) {
+            match.homeTeamScored();
+        } else {
+            match.awayTeamScored();
+        }
+        displayScore();
+    }
+
+    private void displayScore() {
+        Match match = dtm.getMatch();
+        TextView twi = findViewById(R.id.scoreTextView);
+        twi.setText(match.getHomePoint() + "-" + match.getAwayPoint());
     }
 
 }
