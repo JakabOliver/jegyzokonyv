@@ -1,7 +1,9 @@
 package hu.bme.aut.jegyzokonyv;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,12 @@ import hu.bme.aut.jegyzokonyv.data.Player;
 import hu.bme.aut.jegyzokonyv.data.Team;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+
+    CountDownTimer timer;
+    DataManager dtm;
+    long millisecLeft = 0;
+    boolean clockIsRunning = false;
+    Button startStopButton;
 
 
     @Override
@@ -67,7 +75,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        DataManager dtm = DataManager.getInstance();
         Match match = dtm.getMatch();
         Player player = match.getPlayerByButtonId(v.getId());
         registerGoal(player, v);
@@ -92,4 +99,33 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         twi.setText(match.getHomePoint() + "-" + match.getAwayPoint());
     }
 
+    private void resetTimer() {
+        int millisec = 10 * 60 * 1000;
+        if (millisecLeft != 0) {
+            millisec = (int) millisecLeft;
+        }
+        timer = new CountDownTimer(millisec, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                millisecLeft = millisUntilFinished;
+                TextView tv = findViewById(R.id.timeTextView);
+                int second = (int) millisUntilFinished / 1000;
+                int minute = (int) second / 60;
+                second -= (minute * 60);
+                tv.setText(minute + ":" + second);
+            }
+
+            public void onFinish() {
+                resetTimer();
+            }
+        };
+    }
+
+    private void startTimer() {
+        timer.start();
+    }
+
+    private void pauseTimer() {
+        timer.cancel();
+    }
 }
