@@ -16,6 +16,10 @@ import hu.bme.aut.jegyzokonyv.data.Team;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // final int LENGTH_OF_GAME = 10 * 60 * 1000;
+    final int LENGTH_OF_GAME = 5 * 1000;
+    final int MAX_GAME_PART = 4;
+
     CountDownTimer timer;
     DataManager dtm;
     long millisecLeft = 0;
@@ -30,6 +34,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         dtm = DataManager.getInstance();
         loadPlayers();
         displayScore();
+        dtm.getMatch().setPart(1);
         resetTimer();
         startStopButton = findViewById(R.id.startstopButton);
         startStopButton.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +90,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(v.getContext(), "Gólt dobott: " + player.getName() + " #" + player.getNumber(),
                 Toast.LENGTH_SHORT).show();
         Match match = dtm.getMatch();
-        if (match.getHome().getId() == player.getTeam()) {
+        if (match.getHome().getId() == player.getTeam_id()) {
             match.homeTeamScored();
         } else {
             match.awayTeamScored();
@@ -99,26 +104,46 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         twi.setText(match.getHomePoint() + "-" + match.getAwayPoint());
     }
 
+    private void displayTime(long millisUntilFinished) {
+        millisecLeft = millisUntilFinished;
+        TextView tv = findViewById(R.id.timeTextView);
+        int second = (int) millisUntilFinished / 1000;
+        int minute = (int) second / 60;
+        second -= (minute * 60);
+
+        tv.setText(minute + ":" + second);
+    }
+
     private void resetTimer() {
-        int millisec = 10 * 60 * 1000;
+
+
+        int millisec = LENGTH_OF_GAME;
         if (millisecLeft != 0) {
             millisec = (int) millisecLeft;
         }
+
+        displayTime((long) millisec);
         timer = new CountDownTimer(millisec, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                millisecLeft = millisUntilFinished;
-                TextView tv = findViewById(R.id.timeTextView);
-                int second = (int) millisUntilFinished / 1000;
-                int minute = (int) second / 60;
-                second -= (minute * 60);
-                tv.setText(minute + ":" + second);
+                displayTime(millisUntilFinished);
             }
 
             public void onFinish() {
-                resetTimer();
+                timer.cancel();
+                clockIsRunning = false;
+                startStopButton.setText("Start");
+                millisecLeft = LENGTH_OF_GAME;
+                if (dtm.getMatch().getPart() < MAX_GAME_PART) {
+                    dtm.getMatch().startNextPart();
+                    resetTimer();
+                } else {
+                    //todo vége a meccsnek
+                }
             }
         };
+        TextView gamePart = findViewById(R.id.gamePart);
+        gamePart.setText(String.valueOf(dtm.getMatch().getPart()));
     }
 
     private void startTimer() {

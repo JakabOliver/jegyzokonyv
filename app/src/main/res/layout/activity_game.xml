@@ -218,6 +218,15 @@
                 android:text="TextView"
                 android:textSize="36sp" />
 
+            <TextView
+                android:id="@+id/gamePart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="30sp" />
+
             <Button
                 android:id="@+id/startstopButton"
                 android:layout_width="match_parent"
