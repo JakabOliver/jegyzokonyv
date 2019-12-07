@@ -1,37 +1,19 @@
 package hu.bme.aut.jegyzokonyv.data;
 
+import java.util.List;
+
 public class DataManager {
     private static DataManager instance;
     private Match match;
 
 
     private DataManager() {
-        Player[] players = {
-                new Player("Tamás", 1, 2, true),
-                new Player("Balázs", 2, 2, true),
-                new Player("Emese", 3, 2, true),
-                new Player("Tímea", 4, 2, true),
-                new Player("Viktor", 5, 2, true),
-                new Player("Zsolt", 6, 2, true),
-                new Player("Noémi", 7, 2, true),
-                new Player("Eszter", 8, 2, true),
-        };
-        Player[] players2 = {
-                new Player("Olivér", 31, 1, true),
-                new Player("Attila", 8, 1, true),
-                new Player("Jana", 12, 1, true),
-                new Player("Kriszti", 4, 1, true),
-                new Player("Gergő", 9, 1, true),
-                new Player("Dömötör", 10, 1, true),
-                new Player("Fanni", 13, 1, true),
-                new Player("Enikő", 24, 1, true),
-                new Player("Noémi", 21, 1, false),
-        };
-
-        Team home = new Team(1, "Kékvölgy", players2);
-        Team away = new Team(2, "SZAC", players);
-
-        match = new Match(home, away);
+        List<Match> matches = Match.listAll(Match.class);
+        if (matches.isEmpty()) {
+            match = DataManager.init();
+        } else {
+            match = matches.get(0);
+        }
     }
 
     public static DataManager getInstance() {
@@ -41,7 +23,52 @@ public class DataManager {
         return instance;
     }
 
+    public static void destroyData() {
+        Match.deleteAll(Match.class);
+        Team.deleteAll(Team.class);
+        Player.deleteAll(Player.class);
+    }
+
+    public static Match init() {
+        String[] names = {
+                "Olivér",
+                "Attila",
+                "Jana",
+                "Kriszti",
+                "Gergő",
+                "Dömötör",
+                "Fanni",
+                "Enikő",
+        };
+        String[] names2 = {
+                "Tamás",
+                "Balázs",
+                "Emese",
+                "Tímea",
+                "Viktor",
+                "Zsolt",
+                "Noémi",
+                "Eszter",
+        };
+
+        Team home = new Team("Kékvölgy");
+        home.save();
+        home.setPlayers(names);
+        home.save();
+
+        Team away = new Team("SZAC");
+        away.save();
+        away.setPlayers(names2);
+        away.save();
+
+
+        Match match = new Match(home, away);
+        match.save();
+        return match;
+    }
+
     public Match getMatch() {
         return match;
     }
+
 }

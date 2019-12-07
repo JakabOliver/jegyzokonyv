@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 showAlertDialogButtonClicked(view);
             }
         });
+
+        DataManager.destroyData();
+        DataManager dtm = DataManager.getInstance();
+
     }
 
     @Override

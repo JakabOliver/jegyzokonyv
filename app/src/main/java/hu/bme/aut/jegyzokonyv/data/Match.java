@@ -1,30 +1,26 @@
 package hu.bme.aut.jegyzokonyv.data;
 
 
-public class Match {
+import com.orm.SugarRecord;
+
+public class Match extends SugarRecord<Match> {
     private int id;
     private String result;
     private Team home;
     private Team away;
     private int homePoint = 0;
     private int awayPoint = 0;
+    private int part = 0;
+
+    public Match() {
+
+    }
 
     public Match(Team home, Team away) {
         this.home = home;
         this.away = away;
     }
 
-    public boolean start() {
-        return true;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getResult() {
         return result;
@@ -82,5 +78,17 @@ public class Match {
 
     public int getAwayPoint() {
         return awayPoint;
+    }
+
+    public int getPart() {
+        return part;
+    }
+
+    public void setPart(int part) {
+        this.part = part;
+    }
+
+    public void startNextPart() {
+        this.part++;
     }
 }

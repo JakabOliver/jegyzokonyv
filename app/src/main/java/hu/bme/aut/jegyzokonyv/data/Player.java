@@ -1,27 +1,23 @@
 package hu.bme.aut.jegyzokonyv.data;
 
-public class Player {
-    private int id;
+import com.orm.SugarRecord;
+
+public class Player extends SugarRecord<Player> {
     private String name;
     private int number;
-    private int team;
+    private long team_id;
     private boolean active;
     private int buttonId;
 
-    public Player(String name, int number, int team, boolean active) {
+    public Player() {
+
+    }
+
+    public Player(String name, int number) {
         this.name = name;
         this.number = number;
-        this.team = team;
-        this.active = active;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -39,12 +35,12 @@ public class Player {
         this.number = number;
     }
 
-    public int getTeam() {
-        return team;
+    public long getTeam_id() {
+        return team_id;
     }
 
-    public void setTeam(int team) {
-        this.team = team;
+    public void setTeam_id(long team_id) {
+        this.team_id = team_id;
     }
 
     public boolean isActive() {
