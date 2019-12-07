@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import hu.bme.aut.jegyzokonyv.data.DataManager;
+import hu.bme.aut.jegyzokonyv.data.Goal;
 import hu.bme.aut.jegyzokonyv.data.Match;
 import hu.bme.aut.jegyzokonyv.data.Player;
 import hu.bme.aut.jegyzokonyv.data.Team;
@@ -87,15 +88,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void registerGoal(Player player, View v) {
-        Toast.makeText(v.getContext(), "Gólt dobott: " + player.getName() + " #" + player.getNumber(),
-                Toast.LENGTH_SHORT).show();
         Match match = dtm.getMatch();
+        Team team;
         if (match.getHome().getId() == player.getTeam_id()) {
             match.homeTeamScored();
+            team = match.getHome();
         } else {
             match.awayTeamScored();
+            team = match.getAway();
         }
+        long time = (dtm.getMatch().getPart() - 1) * (LENGTH_OF_GAME / 1000) + (LENGTH_OF_GAME - this.millisecLeft) / 1000;
+        new Goal(player, team, dtm.getMatch(), time).save();
         displayScore();
+        Toast.makeText(v.getContext(), "Gólt dobott: " + player.getName() + " #" + player.getNumber(),
+                Toast.LENGTH_SHORT).show();
     }
 
     private void displayScore() {
@@ -138,6 +144,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     dtm.getMatch().startNextPart();
                     resetTimer();
                 } else {
+                    dtm.getMatch().save();
                     //todo vége a meccsnek
                 }
             }

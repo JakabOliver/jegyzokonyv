@@ -27,6 +27,7 @@ public class DataManager {
         Match.deleteAll(Match.class);
         Team.deleteAll(Team.class);
         Player.deleteAll(Player.class);
+        Goal.deleteAll(Goal.class);
     }
 
     public static Match init() {

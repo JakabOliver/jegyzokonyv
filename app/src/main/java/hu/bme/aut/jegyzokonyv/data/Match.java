@@ -4,7 +4,6 @@ package hu.bme.aut.jegyzokonyv.data;
 import com.orm.SugarRecord;
 
 public class Match extends SugarRecord<Match> {
-    private int id;
     private String result;
     private Team home;
     private Team away;
@@ -22,28 +21,12 @@ public class Match extends SugarRecord<Match> {
     }
 
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
     public Team getHome() {
         return home;
     }
 
-    public void setHome(Team home) {
-        this.home = home;
-    }
-
     public Team getAway() {
         return away;
-    }
-
-    public void setAway(Team away) {
-        this.away = away;
     }
 
     public Player getPlayerByButtonId(int buttonID) {

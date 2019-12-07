@@ -1,26 +1,25 @@
 package hu.bme.aut.jegyzokonyv.data;
 
-public class Goal {
-    private int id;
+
+import com.orm.SugarRecord;
+
+public class Goal extends SugarRecord<Goal> {
     private Team team;
-    private int time;
+    private long time;
     private Player player;
     private Match match;
 
-    public Goal(Team team, int time, Player player, Match match) {
+    public Goal() {
+
+    }
+
+    public Goal(Player player, Team team, Match match, long time) {
         this.team = team;
         this.time = time;
         this.player = player;
         this.match = match;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Team getTeam() {
         return team;
@@ -30,7 +29,7 @@ public class Goal {
         this.team = team;
     }
 
-    public int getTime() {
+    public long getTime() {
         return time;
     }
 

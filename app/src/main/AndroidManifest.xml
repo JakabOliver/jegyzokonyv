@@ -27,7 +27,7 @@
             android:value="jegyzokonyv_database.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1.2" />
+            android:value="1.4" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
