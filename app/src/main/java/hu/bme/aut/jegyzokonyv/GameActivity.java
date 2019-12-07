@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 import hu.bme.aut.jegyzokonyv.data.DataManager;
 import hu.bme.aut.jegyzokonyv.data.Goal;
 import hu.bme.aut.jegyzokonyv.data.Match;
@@ -80,14 +82,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(@NotNull View v) {
         Match match = dtm.getMatch();
         Player player = match.getPlayerByButtonId(v.getId());
         registerGoal(player, v);
 
     }
 
-    private void registerGoal(Player player, View v) {
+    private void registerGoal(@NotNull Player player, View v) {
         Match match = dtm.getMatch();
         Team team;
         if (match.getHome().getId() == player.getTeam_id()) {
