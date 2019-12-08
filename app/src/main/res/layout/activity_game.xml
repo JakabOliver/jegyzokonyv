@@ -43,7 +43,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/textView1A1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -58,7 +58,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textView1A2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -82,7 +82,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textView1A3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -97,7 +97,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView1A4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,7 +130,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView1D1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,7 +145,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textView1D2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -169,7 +169,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/textView1D3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -184,7 +184,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/textView1D4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -276,7 +276,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/textView2A1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -291,7 +291,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textView2A2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -315,7 +315,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textView2A3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -330,7 +330,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/textView2A4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -363,7 +363,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/textView2D1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -378,7 +378,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/textView2D2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -402,7 +402,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/textView2D3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -417,7 +417,7 @@
                     android:src="@drawable/korfball_ball" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/textView2D4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

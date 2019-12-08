@@ -63,22 +63,37 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Match match = dtm.getMatch();
         Team home = match.getHome();
         Team away = match.getAway();
-        Player player;
-        for (int i = 0; i < 16; i++) {
-            String textViewID = "textView" + (i + 1);
-            String buttonId = "imageButton" + (i + 1);
-            int twID = getResources().getIdentifier(textViewID, "id", getPackageName());
-            int BtnId = getResources().getIdentifier(buttonId, "id", getPackageName());
-            TextView twi = findViewById(twID);
-            if (i < 8) {
-                player = home.getPlayers()[i];
+        for (int i = 0; i < 4; i++) {
+            Team team = i < 2 ? home : away;
+            char t = i < 2 ? '1' : '2';
+            Player[] players;
+            char a;
+            if (i % 2 == 0) {
+                players = team.getAttackers();
+                a = 'A';
             } else {
-                player = away.getPlayers()[(i - 8)];
+                players = team.getDeffenders();
+                a = 'D';
             }
-            player.setButtonId(BtnId);
-            twi.setText(player.getName() + " #" + player.getNumber());
-            findViewById(BtnId).setOnClickListener(this);
+            for (int j = 0; j < 4; j++) {
+                setPlayer(players[j], j, t + a + String.valueOf((j + 1)));
+            }
         }
+
+
+    }
+
+    private void setPlayer(Player player, int i, String pos) {
+        String textViewID = "textView" + pos;
+        //textView1A1
+        String buttonId = "imageButton" + (i + 1);
+        int twID = getResources().getIdentifier(textViewID, "id", getPackageName());
+        int BtnId = getResources().getIdentifier(buttonId, "id", getPackageName());
+        TextView twi = findViewById(twID);
+
+        player.setButtonId(BtnId);
+        twi.setText(String.format("%s #%d", player.getName(), player.getNumber()));
+        findViewById(BtnId).setOnClickListener(this);
     }
 
     @Override

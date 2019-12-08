@@ -37,4 +37,24 @@ public class Team extends SugarRecord<Team> {
         }
     }
 
+    public Player[] getAttackers() {
+        int i = 0;
+        Player[] attackers = new Player[4];
+        for (Player p : players) {
+            if (p.getActive() == 1) {
+                attackers[i++] = p;
+            }
+        }
+        return attackers;
+    }
+    public Player[] getDeffenders() {
+        int i = 0;
+        Player[] deffenders = new Player[4];
+        for (Player p : players) {
+            if (p.getActive() == 2) {
+                deffenders[i++] = p;
+            }
+        }
+        return deffenders;
+    }
 }

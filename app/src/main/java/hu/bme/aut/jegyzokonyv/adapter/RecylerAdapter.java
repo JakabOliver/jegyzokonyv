@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,9 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
     public void onBindViewHolder(@NonNull RecylerAdapter.ViewHolder holder, int position) {
         Player player = players[position];
         holder.tvName.setText(player.getName());
+        holder.cbAttack.setChecked(player.getActive() == 1);
+        holder.cbDefense.setChecked(player.getActive() == 2);
+
     }
 
     @Override
@@ -50,7 +54,23 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             cbAttack = itemView.findViewById(R.id.cbAttack);
+            cbAttack.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton v, boolean isChecked) {
+                    Player player = players[getAdapterPosition()];
+                    player.setAttack(isChecked);
+                }
+            });
             cbDefense = itemView.findViewById(R.id.cbDefense);
+            cbDefense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton v, boolean isChecked) {
+                    Player player = players[getAdapterPosition()];
+                    player.setDefense(isChecked);
+                }
+            });
         }
+
+
     }
 }

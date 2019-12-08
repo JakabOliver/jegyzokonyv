@@ -6,7 +6,8 @@ public class Player extends SugarRecord<Player> {
     private String name;
     private int number;
     private long team_id;
-    private boolean active;
+    private boolean attack=false;
+    private boolean defense=false;
     private int buttonId;
 
     public Player() {
@@ -43,13 +44,6 @@ public class Player extends SugarRecord<Player> {
         this.team_id = team_id;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     public int getButtonId() {
         return buttonId;
@@ -59,5 +53,20 @@ public class Player extends SugarRecord<Player> {
         this.buttonId = buttonId;
     }
 
+    public void setAttack(boolean attack) {
+        this.defense = false;
+        this.attack = attack;
+    }
+
+    public void setDefense(boolean defense) {
+        this.attack = false;
+        this.defense = defense;
+    }
+
+    public int getActive() {
+        if (this.attack) return 1;
+        if (this.defense) return 2;
+        return 0;
+    }
 
 }
