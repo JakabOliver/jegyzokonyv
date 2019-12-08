@@ -74,4 +74,8 @@ public class Match extends SugarRecord<Match> {
     public void startNextPart() {
         this.part++;
     }
+
+    public boolean readyToStart() {
+        return this.getHome().isReady() && this.getAway().isReady();
+    }
 }

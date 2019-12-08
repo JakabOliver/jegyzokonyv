@@ -10,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import hu.bme.aut.jegyzokonyv.adapter.RecylerAdapter;
+import hu.bme.aut.jegyzokonyv.adapter.PlayerRecylerAdapter;
 import hu.bme.aut.jegyzokonyv.data.DataManager;
 import hu.bme.aut.jegyzokonyv.data.Team;
 
 public class SetLineUpActivity extends AppCompatActivity {
-    private RecylerAdapter recylerAdapter;
+    private PlayerRecylerAdapter playerRecylerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,10 @@ public class SetLineUpActivity extends AppCompatActivity {
         TextView teamTV = findViewById(R.id.lineupTeamTextView);
         teamTV.setText(team.getName());
 
-        recylerAdapter = new RecylerAdapter(team.getPlayers());
+        playerRecylerAdapter = new PlayerRecylerAdapter(team.getPlayers());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recylerAdapter);
+        recyclerView.setAdapter(playerRecylerAdapter);
         Button btnSave = findViewById(R.id.saveButton);
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

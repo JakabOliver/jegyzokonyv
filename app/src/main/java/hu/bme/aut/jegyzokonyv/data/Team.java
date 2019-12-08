@@ -38,8 +38,12 @@ public class Team extends SugarRecord<Team> {
     }
 
     public Player[] getAttackers() {
+        int l = 0;
+        for (Player p : players) {
+            if (p.getActive() == 1) l++;
+        }
         int i = 0;
-        Player[] attackers = new Player[4];
+        Player[] attackers = new Player[l];
         for (Player p : players) {
             if (p.getActive() == 1) {
                 attackers[i++] = p;
@@ -47,14 +51,23 @@ public class Team extends SugarRecord<Team> {
         }
         return attackers;
     }
+
     public Player[] getDeffenders() {
+        int l = 0;
+        for (Player p : players) {
+            if (p.getActive() == 2) l++;
+        }
         int i = 0;
-        Player[] deffenders = new Player[4];
+        Player[] deffenders = new Player[l];
         for (Player p : players) {
             if (p.getActive() == 2) {
                 deffenders[i++] = p;
             }
         }
         return deffenders;
+    }
+
+    public boolean isReady() {
+        return this.getAttackers().length == 4 && this.getDeffenders().length == 4;
     }
 }

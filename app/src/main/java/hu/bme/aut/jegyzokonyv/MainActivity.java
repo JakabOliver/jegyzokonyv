@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +24,13 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gameIntent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(gameIntent);
+                if (valid()) {
+                    Intent gameIntent = new Intent(MainActivity.this, GameActivity.class);
+                    startActivity(gameIntent);
+                } else {
+                    Toast.makeText(view.getContext(), "Please go to the settings and set the starter lineup for the game",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         DataManager.destroyData();
         DataManager dtm = DataManager.getInstance();
 
+    }
+
+    private boolean valid() {
+        DataManager dtm=DataManager.getInstance();
+        return dtm.getMatch().readyToStart();
     }
 
     @Override

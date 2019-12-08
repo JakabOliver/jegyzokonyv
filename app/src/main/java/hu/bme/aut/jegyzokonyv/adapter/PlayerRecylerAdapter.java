@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import hu.bme.aut.jegyzokonyv.R;
 import hu.bme.aut.jegyzokonyv.data.Player;
 
-public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHolder> {
+public class PlayerRecylerAdapter extends RecyclerView.Adapter<PlayerRecylerAdapter.ViewHolder> {
 
     private Player[] players;
 
-    public RecylerAdapter(Player[] players) {
+    public PlayerRecylerAdapter(Player[] players) {
         this.players = players;
     }
 
     @NonNull
     @Override
-    public RecylerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlayerRecylerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View playerRowView =
                 LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.lineup_player_row, parent, false);
@@ -31,7 +31,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecylerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PlayerRecylerAdapter.ViewHolder holder, int position) {
         Player player = players[position];
         holder.tvName.setText(player.getName());
         holder.cbAttack.setChecked(player.getActive() == 1);

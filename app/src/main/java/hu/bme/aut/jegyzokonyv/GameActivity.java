@@ -1,5 +1,6 @@
 package hu.bme.aut.jegyzokonyv;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -20,8 +21,9 @@ import hu.bme.aut.jegyzokonyv.data.Team;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     // final int LENGTH_OF_GAME = 10 * 60 * 1000;
-    final int LENGTH_OF_GAME = 5 * 1000;
-    final int MAX_GAME_PART = 4;
+    //final int MAX_GAME_PART = 4;
+    final int LENGTH_OF_GAME = 20 * 1000;
+    final int MAX_GAME_PART = 1;
 
     CountDownTimer timer;
     DataManager dtm;
@@ -76,7 +78,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 a = 'D';
             }
             for (int j = 0; j < 4; j++) {
-                setPlayer(players[j], j, t + a + String.valueOf((j + 1)));
+                setPlayer(players[j], (i * 4) + j, String.valueOf(t) + String.valueOf(a) + String.valueOf((j + 1)));
             }
         }
 
@@ -162,7 +164,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     resetTimer();
                 } else {
                     dtm.getMatch().save();
-                    //todo vége a meccsnek
+                    gameOver();
                 }
             }
         };
@@ -176,5 +178,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void pauseTimer() {
         timer.cancel();
+    }
+
+    private void gameOver() {
+        Intent resultIntent = new Intent(GameActivity.this, ResultActivity.class);
+        startActivity(resultIntent);
     }
 }
