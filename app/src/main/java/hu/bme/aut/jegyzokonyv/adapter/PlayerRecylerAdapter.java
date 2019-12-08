@@ -57,16 +57,22 @@ public class PlayerRecylerAdapter extends RecyclerView.Adapter<PlayerRecylerAdap
             cbAttack.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton v, boolean isChecked) {
-                    Player player = players[getAdapterPosition()];
-                    player.setAttack(isChecked);
+                    if (isChecked) {
+                        Player player = players[getAdapterPosition()];
+                        player.setAttack(true);
+                        cbDefense.setChecked(false);
+                    }
                 }
             });
             cbDefense = itemView.findViewById(R.id.cbDefense);
             cbDefense.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton v, boolean isChecked) {
-                    Player player = players[getAdapterPosition()];
-                    player.setDefense(isChecked);
+                    if (isChecked) {
+                        Player player = players[getAdapterPosition()];
+                        player.setDefense(true);
+                        cbAttack.setChecked(false);
+                    }
                 }
             });
         }
