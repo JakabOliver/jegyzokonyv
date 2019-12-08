@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Jegyzokonyv</string>
+    <string name="start">Kezdés</string>
+    <string name="exit">Kilépés</string>
+    <string name="t">T</string>
+    <string name="player">játékos</string>
+    <string name="player_31">Jakab Olivér #31</string>
+    <string name="v">V</string>
+    <string name="settings">Beállítások</string>
+    <string name="home_line_up">Hazai csapat kezdősor</string>
+    <string name="away_line_up">Vendég csapat kezdősor</string>
+    <string name="line_up">Kezdősor</string>
+    <string name="sample_team">Példa csapat</string>
+    <string name="save">Mentés</string>
+    <string name="game_over">Mérközés vége</string>
+    <string name="result">eredmény</string>
+    <string name="textview">TextView</string>
+    <string name="attack">Támad</string>
+    <string name="defense">Védekezik</string>
+    <string name="pause">Szünet</string>
+    <string name="continue2">Folytatás</string>
+    <string name="are_you_sure">Biztos vagy benne?</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="settings_incompete">Kérlek a beállítások között állítsd be a kezdő 8-at</string>
+    <string name="scored">%s #%d gólt szerzett</string>
+</resources>

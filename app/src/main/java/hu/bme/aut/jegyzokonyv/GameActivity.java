@@ -22,10 +22,10 @@ import hu.bme.aut.jegyzokonyv.data.Team;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // final int LENGTH_OF_GAME = 10 * 60 * 1000;
-    //final int MAX_GAME_PART = 4;
-    final int LENGTH_OF_GAME = 5 * 1000;
-    final int MAX_GAME_PART = 2;
+    final int LENGTH_OF_GAME = 10 * 60 * 1000;
+    final int MAX_GAME_PART = 4;
+    //final int LENGTH_OF_GAME = 5 * 1000;
+    //final int MAX_GAME_PART = 2;
 
     CountDownTimer timer;
     DataManager dtm;
@@ -121,7 +121,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         long time = (dtm.getMatch().getPart() - 1) * (LENGTH_OF_GAME / 1000) + (LENGTH_OF_GAME - this.millisecLeft) / 1000;
         new Goal(player, team, dtm.getMatch(), time).save();
         displayScore();
-        Toast.makeText(v.getContext(), "Gólt dobott: " + player.getName() + " #" + player.getNumber(),
+        Toast.makeText(v.getContext(), String.format(Locale.ENGLISH, getResources().getString(R.string.scored), player.getName(), player.getNumber()),
                 Toast.LENGTH_SHORT).show();
     }
 
