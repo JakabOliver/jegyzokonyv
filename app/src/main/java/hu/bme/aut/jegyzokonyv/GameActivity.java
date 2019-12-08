@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 import hu.bme.aut.jegyzokonyv.data.DataManager;
 import hu.bme.aut.jegyzokonyv.data.Goal;
 import hu.bme.aut.jegyzokonyv.data.Match;
@@ -22,12 +24,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     // final int LENGTH_OF_GAME = 10 * 60 * 1000;
     //final int MAX_GAME_PART = 4;
-    final int LENGTH_OF_GAME = 20 * 1000;
-    final int MAX_GAME_PART = 1;
+    final int LENGTH_OF_GAME = 5 * 1000;
+    final int MAX_GAME_PART = 2;
 
     CountDownTimer timer;
     DataManager dtm;
-    long millisecLeft = 0;
+    long millisecLeft = LENGTH_OF_GAME;
     boolean clockIsRunning = false;
     Button startStopButton;
 
@@ -49,11 +51,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     resetTimer();
                     timer.start();
                     clockIsRunning = true;
-                    startStopButton.setText("Pause");
+                    startStopButton.setText(getResources().getString(R.string.pause));
                 } else {
                     timer.cancel();
                     clockIsRunning = false;
-                    startStopButton.setText("Continue");
+                    startStopButton.setText(getResources().getString(R.string.continue2));
                 }
             }
         });
@@ -94,7 +96,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         TextView twi = findViewById(twID);
 
         player.setButtonId(BtnId);
-        twi.setText(String.format("%s #%d", player.getName(), player.getNumber()));
+        twi.setText(String.format(Locale.ENGLISH, "%s #%d", player.getName(), player.getNumber()));
         findViewById(BtnId).setOnClickListener(this);
     }
 
@@ -126,17 +128,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void displayScore() {
         Match match = dtm.getMatch();
         TextView twi = findViewById(R.id.scoreTextView);
-        twi.setText(match.getHomePoint() + "-" + match.getAwayPoint());
+        twi.setText(String.format(Locale.ENGLISH, "%s - %s", match.getHomePoint(), match.getAwayPoint()));
     }
 
     private void displayTime(long millisUntilFinished) {
-        millisecLeft = millisUntilFinished;
         TextView tv = findViewById(R.id.timeTextView);
         int second = (int) millisUntilFinished / 1000;
-        int minute = (int) second / 60;
+        int minute = second / 60;
         second -= (minute * 60);
 
-        tv.setText(minute + ":" + second);
+        tv.setText(String.format(Locale.ENGLISH, "%d:%d", minute, second));
     }
 
     private void resetTimer() {
@@ -151,13 +152,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         timer = new CountDownTimer(millisec, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                millisecLeft = millisUntilFinished;
                 displayTime(millisUntilFinished);
             }
 
             public void onFinish() {
                 timer.cancel();
                 clockIsRunning = false;
-                startStopButton.setText("Start");
+                startStopButton.setText(getResources().getString(R.string.start));
                 millisecLeft = LENGTH_OF_GAME;
                 if (dtm.getMatch().getPart() < MAX_GAME_PART) {
                     dtm.getMatch().startNextPart();
@@ -172,13 +174,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         gamePart.setText(String.valueOf(dtm.getMatch().getPart()));
     }
 
-    private void startTimer() {
-        timer.start();
-    }
-
-    private void pauseTimer() {
-        timer.cancel();
-    }
 
     private void gameOver() {
         Intent resultIntent = new Intent(GameActivity.this, ResultActivity.class);

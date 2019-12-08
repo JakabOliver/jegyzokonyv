@@ -25,31 +25,13 @@ public class Goal extends SugarRecord<Goal> {
         return team;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 
     public long getTime() {
         return time;
     }
 
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Match getMatch() {
-        return match;
-    }
-
-    public void setMatch(Match match) {
-        this.match = match;
     }
 }

@@ -17,4 +17,10 @@
     <string name="textview">TextView</string>
     <string name="attack">Attack</string>
     <string name="defense">Defense</string>
+    <string name="pause">Pause</string>
+    <string name="continue2">Continue</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="settings_incompete">Please go to the settings and set the starter lineup for the game</string>
 </resources>

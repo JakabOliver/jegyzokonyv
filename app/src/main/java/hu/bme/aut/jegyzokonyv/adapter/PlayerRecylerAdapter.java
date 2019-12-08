@@ -46,11 +46,11 @@ public class PlayerRecylerAdapter extends RecyclerView.Adapter<PlayerRecylerAdap
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvName;
-        public CheckBox cbAttack;
-        public CheckBox cbDefense;
+        TextView tvName;
+        CheckBox cbAttack;
+        CheckBox cbDefense;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             cbAttack = itemView.findViewById(R.id.cbAttack);

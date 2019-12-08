@@ -15,7 +15,6 @@ import hu.bme.aut.jegyzokonyv.data.DataManager;
 import hu.bme.aut.jegyzokonyv.data.Team;
 
 public class SetLineUpActivity extends AppCompatActivity {
-    private PlayerRecylerAdapter playerRecylerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +22,7 @@ public class SetLineUpActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String t = intent.getStringExtra("team");
         Team team;
+        assert t != null;
         if (t.equals("home")) {
             team = dtm.getMatch().getHome();
         } else {
@@ -36,7 +36,7 @@ public class SetLineUpActivity extends AppCompatActivity {
         TextView teamTV = findViewById(R.id.lineupTeamTextView);
         teamTV.setText(team.getName());
 
-        playerRecylerAdapter = new PlayerRecylerAdapter(team.getPlayers());
+        PlayerRecylerAdapter playerRecylerAdapter = new PlayerRecylerAdapter(team.getPlayers());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(playerRecylerAdapter);

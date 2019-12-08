@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import hu.bme.aut.jegyzokonyv.R;
 import hu.bme.aut.jegyzokonyv.data.DataManager;
@@ -37,9 +38,9 @@ public class GoalRecylerAdapter extends RecyclerView.Adapter<GoalRecylerAdapter.
         Goal goal = goals.get(position);
         Match match = DataManager.getInstance().getMatch();
         if (goal.getTeam().getId().equals(match.getHome().getId())) {
-            holder.homeTextView.setText(String.format("%s - %d", goal.getPlayer().getName(), goal.getTime()));
+            holder.homeTextView.setText(String.format(Locale.ENGLISH, "%s - %d", goal.getPlayer().getName(), goal.getTime()));
         } else {
-            holder.awayTextView.setText(String.format("%s - %d", goal.getPlayer().getName(), goal.getTime()));
+            holder.awayTextView.setText(String.format(Locale.ENGLISH, "%s - %d", goal.getPlayer().getName(), goal.getTime()));
         }
     }
 
@@ -48,11 +49,11 @@ public class GoalRecylerAdapter extends RecyclerView.Adapter<GoalRecylerAdapter.
         return goals.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView homeTextView;
         TextView awayTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             homeTextView = itemView.findViewById(R.id.homeTextView);
             awayTextView = itemView.findViewById(R.id.awayTextView);

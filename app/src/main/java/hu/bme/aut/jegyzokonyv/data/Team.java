@@ -10,7 +10,7 @@ public class Team extends SugarRecord<Team> {
 
     }
 
-    public Team(String name) {
+    Team(String name) {
         this.name = name;
     }
 
@@ -27,7 +27,7 @@ public class Team extends SugarRecord<Team> {
         return players;
     }
 
-    public void setPlayers(String[] names) {
+    void setPlayers(String[] names) {
         players = new Player[names.length];
         for (int i = 0; i < names.length; i++) {
             Player player = new Player(names[i], (i + 1));
@@ -67,7 +67,7 @@ public class Team extends SugarRecord<Team> {
         return deffenders;
     }
 
-    public boolean isReady() {
+    boolean isReady() {
         return this.getAttackers().length == 4 && this.getDeffenders().length == 4;
     }
 }

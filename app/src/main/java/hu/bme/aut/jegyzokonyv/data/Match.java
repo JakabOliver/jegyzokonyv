@@ -4,7 +4,6 @@ package hu.bme.aut.jegyzokonyv.data;
 import com.orm.SugarRecord;
 
 public class Match extends SugarRecord<Match> {
-    private String result;
     private Team home;
     private Team away;
     private int homePoint = 0;
@@ -15,7 +14,7 @@ public class Match extends SugarRecord<Match> {
 
     }
 
-    public Match(Team home, Team away) {
+    Match(Team home, Team away) {
         this.home = home;
         this.away = away;
     }
@@ -32,16 +31,16 @@ public class Match extends SugarRecord<Match> {
     public Player getPlayerByButtonId(int buttonID) {
         Player[] players = getHome().getPlayers();
 
-        for (int i = 0; i < players.length; i++) {
-            if (players[i].getButtonId() == buttonID) {
-                return players[i];
+        for (Player player : players) {
+            if (player.getButtonId() == buttonID) {
+                return player;
             }
         }
 
         players = getAway().getPlayers();
-        for (int i = 0; i < players.length; i++) {
-            if (players[i].getButtonId() == buttonID) {
-                return players[i];
+        for (Player player : players) {
+            if (player.getButtonId() == buttonID) {
+                return player;
             }
         }
         return null;

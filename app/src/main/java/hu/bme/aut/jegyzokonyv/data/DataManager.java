@@ -30,7 +30,7 @@ public class DataManager {
         Goal.deleteAll(Goal.class);
     }
 
-    public static Match init() {
+    private static Match init() {
         String[] names = {
                 "Olivér",
                 "Attila",
