@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(view.getContext(),SetLineUpActivity.class);
+                Intent i = new Intent(view.getContext(), SetLineUpActivity.class);
                 i.putExtra("team", "away");
                 view.getContext().startActivity(i);
             }

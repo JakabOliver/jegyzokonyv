@@ -5,6 +5,7 @@ import java.util.List;
 public class DataManager {
     private static DataManager instance;
     private Match match;
+    private List<Round> rounds;
 
 
     private DataManager() {
@@ -72,4 +73,7 @@ public class DataManager {
         return match;
     }
 
+    public void setRounds(List<Round> rounds) {
+        this.rounds=rounds;
+    }
 }

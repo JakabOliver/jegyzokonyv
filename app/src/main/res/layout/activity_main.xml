@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/exit" />
+
+        <Button
+            android:id="@+id/networkTestButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Test" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
